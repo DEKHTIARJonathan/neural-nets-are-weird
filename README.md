@@ -40,8 +40,10 @@ docker stop computervision
 
 #### Accessing the IPython Notebook
 
-** Default Password:**
-The default password is : **neuralnet**
+**Default Password:** 
+
+The default password is: **neuralnet**.
+
 Change it, if needed, in the config file : jupyter_notebook_config.py and rebuild the container.
 
 **On Linux:**
