@@ -20,27 +20,27 @@ docker pull born2data/caffecv:http
 ### Launching the Docker Container 
 
 #### Attached Mode : When you close the shell, the container is stopped.
-If you built the container :
+**If you built the container:**
 ```
 docker run -it -p 9990:9990 -v $PWD:/neural-nets neural-nets-fun:caffe /bin/bash -c 'export PYTHONPATH=/opt/caffe/python && cd /neural-nets && ipython notebook --no-browser --ip 0.0.0.0 --port=9990'
 ```
 
-If you downloaded the container :
+**If you downloaded the container:**
 ```
 docker run -it -p 9990:9990 -v $PWD:/neural-nets born2data:caffecv:http /bin/bash -c 'export PYTHONPATH=/opt/caffe/python && cd /neural-nets && ipython notebook --no-browser --ip 0.0.0.0 --port=9990'
 ```
 
 #### Detached Mode : The container is Stop when you run the "stop command"
-If you built the container :
+**If you built the container:**
 ```
 docker run -d -p 9990:9990 -v $PWD:/neural-nets --name computervision neural-nets-fun:caffe /bin/bash -c 'export PYTHONPATH=/opt/caffe/python && cd /neural-nets && ipython notebook --no-browser --ip 0.0.0.0 --port=9990'
 ```
-If you downloaded the container :
+**If you downloaded the container:**
 ```
 docker run -d -p 9990:9990 -v $PWD:/neural-nets --name computervision born2data:caffecv:http /bin/bash -c 'export PYTHONPATH=/opt/caffe/python && cd /neural-nets && ipython notebook --no-browser --ip 0.0.0.0 --port=9990'
 ```
 
-To Stop the Container : 
+**To Stop the Container:**
 ```
 docker stop computervision
 ```
