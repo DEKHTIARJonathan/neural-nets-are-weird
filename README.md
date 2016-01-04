@@ -5,7 +5,7 @@ Source code for the article [How to trick a neural network into thinking a panda
 #### Building the docker container
 You can choose to build by your own the container. You can run the following commands :
 ```
-git clone https://github.com/jvns/neural-nets-are-weird
+git clone -b http-version https://github.com/jvns/neural-nets-are-weird
 cd neural-nets-are-weird
 docker build -t neural-nets-fun:caffe .
 ```
@@ -14,14 +14,20 @@ docker build -t neural-nets-fun:caffe .
 If you don't want to build the container and prefer downloading a working version.
 You can run the following command : 
 ```
-docker pull born2data/caffecv
+docker pull born2data/caffecv:http
 ```
 
 ### Launching the Docker Container 
 
 #### Attached Mode : When you close the shell, the container is stopped.
+If you built the container :
 ```
-docker run -i -p 9990:9990 -v $PWD:/neural-nets -t neural-nets-fun:caffe /bin/bash -c 'export PYTHONPATH=/opt/caffe/python && cd /neural-nets && ipython notebook --no-browser --ip 0.0.0.0 --port=9990'
+docker run -it -p 9990:9990 -v $PWD:/neural-nets neural-nets-fun:caffe /bin/bash -c 'export PYTHONPATH=/opt/caffe/python && cd /neural-nets && ipython notebook --no-browser --ip 0.0.0.0 --port=9990'
+```
+
+If you downloaded the container :
+```
+docker run -it -p 9990:9990 -v $PWD:/neural-nets born2data:caffecv:http /bin/bash -c 'export PYTHONPATH=/opt/caffe/python && cd /neural-nets && ipython notebook --no-browser --ip 0.0.0.0 --port=9990'
 ```
 
 #### Detached Mode : The container is Stop when you run the "stop command"
@@ -31,8 +37,9 @@ docker run -d -p 9990:9990 -v $PWD:/neural-nets --name computervision neural-net
 ```
 If you downloaded the container :
 ```
-docker run -d -p 9990:9990 -v $PWD:/neural-nets --name computervision born2data:caffecv /bin/bash -c 'export PYTHONPATH=/opt/caffe/python && cd /neural-nets && ipython notebook --no-browser --ip 0.0.0.0 --port=9990'
+docker run -d -p 9990:9990 -v $PWD:/neural-nets --name computervision born2data:caffecv:http /bin/bash -c 'export PYTHONPATH=/opt/caffe/python && cd /neural-nets && ipython notebook --no-browser --ip 0.0.0.0 --port=9990'
 ```
+
 To Stop the Container : 
 ```
 docker stop computervision
@@ -42,7 +49,7 @@ docker stop computervision
 
 **On Linux:**
 
-Once you've run those commands, click on this link: [http://localhost:9990/notebooks/notebooks/neural-nets-are-weird.ipynb](http://localhost:9990/notebooks/notebooks/neural-nets-are-weird.ipynb) and you should be good to go! This starts an IPython Notebook server, which lets you run code interactively.
+Once you've run those commands, click on this link: [http://localhost:9990/](http://localhost:9990/) and you should be good to go! This starts an IPython Notebook server, which lets you run code interactively.
 
 **On Windows and OSX:** 
 
