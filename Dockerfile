@@ -1,12 +1,12 @@
 FROM continuumio/anaconda
 
-RUN apt-get update
+RUN apt-get update && apt-get upgrade -y --force-yes
 
 RUN apt-get -y --force-yes install libprotobuf-dev libleveldb-dev libsnappy-dev libopencv-dev libhdf5-serial-dev protobuf-compiler
 RUN apt-get -y --force-yes install build-essential
 
 RUN echo deb http://cz.archive.ubuntu.com/ubuntu trusty main universe > /etc/apt/sources.list
-RUN apt-get update
+RUN apt-get update 
 
 RUN apt-get -y --force-yes install --no-install-recommends libboost-all-dev
 RUN apt-get -y --force-yes install libgflags-dev libgoogle-glog-dev liblmdb-dev
@@ -54,3 +54,12 @@ RUN /opt/caffe/data/ilsvrc12/get_ilsvrc_aux.sh
 RUN echo LS0tIGRlcGxveS5wcm90b3R4dC5leGFtcGxlCTIwMTUtMTEtMTAgMDE6NTg6MzYuNDUyNjgxMTg3ICswMDAwCisrKyBkZXBsb3kucHJvdG90eHQJMjAxNS0xMS0xMCAwMjowMDoxNy40MzI2ODQxMDYgKzAwMDAKQEAgLTEsNSArMSw2IEBACiBuYW1lOiAiR29vZ2xlTmV0IgogaW5wdXQ6ICJkYXRhIgorZm9yY2VfYmFja3dhcmQ6IHRydWUKIGlucHV0X3NoYXBlIHsKICAgZGltOiAxMAogICBkaW06IDMK \
     | base64 -d \
     | patch -u /opt/caffe/models/bvlc_googlenet/deploy.prototxt
+
+#Setting Jupyter Notebook Config File
+
+## HTTPS Certificate : you can generate a new one with the following command : openssl req -x509 -nodes -days 1460 -newkey rsa:4096 -keyout mykey.key -out mycert.pem
+ADD mycert.pem /certificate/
+
+RUN jupyter notebook --generate-config
+RUN rm /.jupyter/jupyter_notebook_config.py
+ADD jupyter_notebook_config.py /.jupyter/
