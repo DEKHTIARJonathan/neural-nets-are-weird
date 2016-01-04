@@ -75,6 +75,8 @@ rm mycert.pem
 openssl req -x509 -nodes -days 1460 -newkey rsa:4096 -keyout mycert.pem -out mycert.pem
 ```
 
+Then rebuild the docker container (see above).
+
 #### Password Protection Remarks
 
 The Notebook is password protected, the default password is : **neuralnet**.
