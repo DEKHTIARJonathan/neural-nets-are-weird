@@ -57,3 +57,32 @@ Once you've run those commands, click on this link: [https://localhost:9990](htt
 As the container are running inside a **Linux Virtual Machine**, you must use the address of the VM hosting Docker in the URL (not localhost). This address is shown when starting Docker, or you can get the *docker-address* by running the command ````docker-machine ip default```` Then point your browser to *https://docker-address:9990* and follow along with the instructions in the IPython notebook.
 
 **Be carefull, you must use HTTPS to access the notebook.**
+
+#### HTTPS Remarks
+
+It is totally normal if you have a **warning** while accessing the Notebook. The certificate mycert.pem is **self-generated** and so **untrusted**.
+
+If you want to generate your own certificate instead of using the one in the Git Repo, please run the following commands :
+
+```
+rm mycert.pem
+openssl req -x509 -nodes -days 1460 -newkey rsa:4096 -keyout mycert.pem -out mycert.pem
+```
+
+#### Password Protection Remarks
+
+The Notebook is password protected, the default password is : **neuralnet**.
+
+If you want to change the password please run inside a python shell the following commands:
+```
+python
+>>> from IPython.lib import passwd
+>>> passwd('yournewpassword') 
+```
+
+The output needs to be copied at the line 20 of this file : **jupyer_notebook_config.py**.
+
+Then rebuild the docker container (see above).
+```
+c.NotebookApp.password = u'[output given by the Python command]'
+```
