@@ -18,14 +18,14 @@ You can run the following command :</p>
 <pre><code>docker run -it -p <span class="hljs-number">9990</span><span class="hljs-symbol">:</span><span class="hljs-number">9990</span> -v <span class="hljs-variable">$PWD</span><span class="hljs-symbol">:/neural-nets</span> neural-nets-<span class="hljs-function"><span class="hljs-keyword">fun</span>:<span class="hljs-title">caffe</span></span> /bin/bash -c <span class="hljs-string">'export PYTHONPATH=/opt/caffe/python &amp;&amp; cd /neural-nets &amp;&amp; jupyter notebook'</span>
 </code></pre>
 <p><strong>If you downloaded the container :</strong></p>
-<pre><code>docker run -it -p <span class="hljs-number">9990</span><span class="hljs-symbol">:</span><span class="hljs-number">9990</span> -v <span class="hljs-variable">$PWD</span><span class="hljs-symbol">:/neural-nets</span> <span class="hljs-symbol">born2data:</span>caffecv /bin/bash -c <span class="hljs-string">'export PYTHONPATH=/opt/caffe/python &amp;&amp; cd /neural-nets &amp;&amp; jupyter notebook'</span>
+<pre><code>docker run -it -p <span class="hljs-number">9990</span><span class="hljs-symbol">:</span><span class="hljs-number">9990</span> -v <span class="hljs-variable">$PWD</span><span class="hljs-symbol">:/neural-nets</span> <span class="hljs-symbol">born2data/</span>caffecv /bin/bash -c <span class="hljs-string">'export PYTHONPATH=/opt/caffe/python &amp;&amp; cd /neural-nets &amp;&amp; jupyter notebook'</span>
 </code></pre>
 <h4><a id="Detached_Mode__The_container_is_Stop_when_you_run_the_stop_command_32"></a>Detached Mode : The container is Stop when you run the “stop command”</h4>
 <p><strong>If you built the container :</strong></p>
 <pre><code>docker run -d -p <span class="hljs-number">9990</span><span class="hljs-symbol">:</span><span class="hljs-number">9990</span> -v <span class="hljs-variable">$PWD</span><span class="hljs-symbol">:/neural-nets</span> --name computervision neural-nets-<span class="hljs-function"><span class="hljs-keyword">fun</span>:<span class="hljs-title">caffe</span></span> /bin/bash -c <span class="hljs-string">'export PYTHONPATH=/opt/caffe/python &amp;&amp; cd /neural-nets &amp;&amp; jupyter notebook'</span>
 </code></pre>
 <p><strong>If you downloaded the container :</strong></p>
-<pre><code>docker run -d -p <span class="hljs-number">9990</span><span class="hljs-symbol">:</span><span class="hljs-number">9990</span> -v <span class="hljs-variable">$PWD</span><span class="hljs-symbol">:/neural-nets</span> --name computervision <span class="hljs-symbol">born2data:</span>caffecv /bin/bash -c <span class="hljs-string">'export PYTHONPATH=/opt/caffe/python &amp;&amp; cd /neural-nets &amp;&amp; jupyter notebook'</span>
+<pre><code>docker run -d -p <span class="hljs-number">9990</span><span class="hljs-symbol">:</span><span class="hljs-number">9990</span> -v <span class="hljs-variable">$PWD</span><span class="hljs-symbol">:/neural-nets</span> --name computervision <span class="hljs-symbol">born2data/</span>caffecv /bin/bash -c <span class="hljs-string">'export PYTHONPATH=/opt/caffe/python &amp;&amp; cd /neural-nets &amp;&amp; jupyter notebook'</span>
 </code></pre>
 <p><strong>To Stop the Container :</strong></p>
 <pre><code>docker <span class="hljs-keyword">stop</span> computervision
