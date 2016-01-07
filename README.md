@@ -27,7 +27,7 @@ docker run -it -p 9990:9990 -v $PWD:/neural-nets neural-nets-fun:caffe /bin/bash
 
 **If you downloaded the container :**
 ```
-docker run -it -p 9990:9990 -v $PWD:/neural-nets born2data:caffecv /bin/bash -c 'export PYTHONPATH=/opt/caffe/python && cd /neural-nets && jupyter notebook'
+docker run -it -p 9990:9990 -v $PWD:/neural-nets born2data/caffecv /bin/bash -c 'export PYTHONPATH=/opt/caffe/python && cd /neural-nets && jupyter notebook'
 ```
 
 #### Detached Mode : The container is Stop when you run the "stop command"
@@ -37,7 +37,7 @@ docker run -d -p 9990:9990 -v $PWD:/neural-nets --name computervision neural-net
 ```
 **If you downloaded the container :**
 ```
-docker run -d -p 9990:9990 -v $PWD:/neural-nets --name computervision born2data:caffecv /bin/bash -c 'export PYTHONPATH=/opt/caffe/python && cd /neural-nets && jupyter notebook'
+docker run -d -p 9990:9990 -v $PWD:/neural-nets --name computervision born2data/caffecv /bin/bash -c 'export PYTHONPATH=/opt/caffe/python && cd /neural-nets && jupyter notebook'
 ```
 **To Stop the Container :**
 ```
