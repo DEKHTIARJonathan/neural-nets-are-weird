@@ -8,7 +8,9 @@ RUN apt-get -y --force-yes install build-essential
 RUN echo deb http://cz.archive.ubuntu.com/ubuntu trusty main universe > /etc/apt/sources.list
 RUN apt-get update 
 
-RUN apt-get -y --force-yes install --no-install-recommends libboost-all-dev
+RUN wget http://ftp.uk.debian.org/debian/pool/main/b/boost-defaults/libboost-all-dev_1.55.0.2_amd64.deb
+RUN dpkg -i libboost-all-dev_1.55.0.2_amd64.deb
+#RUN apt-get -y --force-yes install --no-install-recommends libboost-all-dev
 RUN apt-get -y --force-yes install libgflags-dev libgoogle-glog-dev liblmdb-dev
 
 #set CPU_ONLY := 1
